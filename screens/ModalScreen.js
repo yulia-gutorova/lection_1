@@ -40,6 +40,7 @@ export default  function ModalScreen () {
     )
 }
 
+//-------------- Styles-----------------------------
 const styles = StyleSheet.create({  
     container: {  
         flex: 1,  

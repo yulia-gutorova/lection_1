@@ -1,5 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { Animated } from "react-native";
+import { useFonts } from 'expo-font';
+import * as Font from 'expo-font';
 
 import {
     View,
@@ -13,94 +15,117 @@ import {
 } from "react-native";
 
 import { Hoverable, Pressable, } from 'react-native-web-hover'
+import { useState } from "react";
 
 const Separator = () => <View style={styles.separator} />;
 
-
-
 const HomeScreen = ({ navigation }) => {
 
-    return (
-        <View style={styles.container}>
+    const [loadFonts, setLoadFonts] = useState(true);
 
-            <View style={styles.miniContainer}>
-                <Text style={styles.text}>HomeScreen</Text>
-            </View>
+   /*  console.log(loadFonts);
 
-            <View>
-                <ImageBackground
-                    source={require('../assets/owl.png')}
-                    style={styles.image} />
-            </View>
+    async function fonts() {
+        try{
+            await Font.loadAsync({
+                "PoppinsBold": require("../assets/fonts/Poppins-Bold.ttf"),
+                "RalewayItalic": require("../assets/fonts/Raleway-Italic.ttf"),
+              });
+        }
+        catch(e){
+            console.warn(e);
+        }
+        finally{
+            setLoadFonts(true);
+            console.log(loadFonts)
+        }
+      }
 
+    fonts();  */
 
-
+    if(loadFonts) {
+        return (
             <View style={styles.container}>
-
-                <LinearGradient
-                    colors={['#006400', 'green', '#daa520']}
-                    style={styles.gradientContainer}>
-
-                    <View>
-                    <TouchableHighlight
-                        style={styles.btnPressMe}
-                        onPress={() => navigation.push("Buttons")}>
-                        <Text style={styles.btnText}>GO TO BUTTONS</Text>
-                    </TouchableHighlight>
-
-                    <Separator />
-
-                    <TouchableHighlight
-                        style={styles.btnPressMe}
-                        onPress={() => navigation.push("Input")}>
-                        <Text style={styles.btnText}>GO TO FLATLIST</Text>
-                    </TouchableHighlight>
-
-                    <Separator />
-
-                    <TouchableHighlight
-                        style={styles.btnPressMe}
-                        onPress={() => navigation.push("Scroll")}>
-                        <Text style={styles.btnText}>GO TO SCROLLVIEW</Text>
-                    </TouchableHighlight>
-
-                    <Separator />
-
-                    <TouchableHighlight
-                        style={styles.btnPressMe}
-                        onPress={() => navigation.push("Modal")}>
-                        <Text style={styles.btnText}>GO TO MODAL</Text>
-                    </TouchableHighlight>
-
-                    <Separator />
-
-                    <TouchableHighlight
-                        style={styles.btnPressMe}
-                        onPress={() => navigation.push("FoodScreen")}>
-                        <Text style={styles.btnText}>GO TO HANGRY OWLS</Text>
-                    </TouchableHighlight>
-                    </View>
-                    
-                </LinearGradient>
+    
+                <View style={styles.miniContainer}>
+                    <Text style={styles.text}>HomeScreen</Text>
+                </View>
+    
+                <View>
+                    <ImageBackground
+                        source={require('../assets/owl.png')}
+                        style={styles.image} />
+                </View>
+    
+    
+    
+                <View style={styles.container}>
+    
+                    <LinearGradient
+                        colors={['#006400', 'green', '#daa520']}
+                        style={styles.gradientContainer}>
+    
+                        <View>
+                        <TouchableHighlight
+                            style={styles.btnPressMe}
+                            onPress={() => navigation.push("Buttons")}>
+                            <Text style={styles.btnText}>GO TO BUTTONS</Text>
+                        </TouchableHighlight>
+    
+                        <Separator />
+    
+                        <TouchableHighlight
+                            style={styles.btnPressMe}
+                            onPress={() => navigation.push("Input")}>
+                            <Text style={styles.btnText}>GO TO FLATLIST</Text>
+                        </TouchableHighlight>
+    
+                        <Separator />
+    
+                        <TouchableHighlight
+                            style={styles.btnPressMe}
+                            onPress={() => navigation.push("Scroll")}>
+                            <Text style={styles.btnText}>GO TO SCROLLVIEW</Text>
+                        </TouchableHighlight>
+    
+                        <Separator />
+    
+                        <TouchableHighlight
+                            style={styles.btnPressMe}
+                            onPress={() => navigation.push("Modal")}>
+                            <Text style={styles.btnText}>GO TO MODAL</Text>
+                        </TouchableHighlight>
+    
+                        <Separator />
+    
+                        <TouchableHighlight
+                            style={styles.btnPressMe}
+                            onPress={() => navigation.push("FoodScreen")}>
+                            <Text style={styles.btnText}>GO TO HUNGRY OWL</Text>
+                        </TouchableHighlight>
+                        </View>
+                        
+                    </LinearGradient>
+                </View>
+    
+    
             </View>
-
-
-        </View>
-
-    )
-
+        )
+      }
 }
 
 export default HomeScreen
 
+//-------------- Styles-----------------------------
 const styles = StyleSheet.create({
     text: {
         marginTop: 30,
         fontSize: 20,
-        fontWeight: "bold"
+        fontFamily: "PoppinsBold",  
     },
 
     btnText: {
+        fontFamily: "RalewayItalic",
         textAlign: 'center',
         color: "white",
         fontSize: 14,
@@ -125,7 +150,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'gray',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: 30
+        paddingBottom: 30,
+        fontFamily: "Raleway-Italic",
     },
 
     buttonsContainer: {

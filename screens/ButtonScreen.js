@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -15,13 +16,17 @@ const Separator = () => <View style={styles.separator} />;
 
 
 export default function ButtonScreen() {
+    const [background, setBackground] = useState('violet');
+    const [text, setText] = useState('');
 
     const helloWorld = () => {
         console.log("Hello ");
+        setBackground('gray');
     }
 
     const helloWorld2 = () => {
         console.log("World");
+        setBackground('violet');
     }
 
     return (
@@ -46,8 +51,14 @@ export default function ButtonScreen() {
 
                     <Separator />
 
-                    <Pressable style={styles.btnPressMe} onPress={helloWorld}>
-                        <Text style={styles.text}>Pressable</Text>
+                    <Pressable style={[styles.btnPressMe, {backgroundColor: background}]} 
+                                onPressIn={() => setBackground('gray')}
+                                onPress={helloWorld}
+                                onPressOut={helloWorld2}>
+                                    {({pressed}) => (
+          <Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>
+        )}
+                        {/* <Text style={styles.text}>Pressable</Text> */}
                     </Pressable>
 
                     <Separator />
@@ -90,9 +101,8 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 32,
         borderRadius: 4,
-        elevation: 10,
         backgroundColor: 'violet',
-        minWidth: 250
+        minWidth: 100, 
     },
     text: {
         color: "white",

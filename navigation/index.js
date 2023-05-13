@@ -2,9 +2,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import HomeScreen from "../screens/HomeScreen";
 import ButtonScreen from "../screens/ButtonScreen";
-import InputFieldScreen from "../screens/InputField";
+import InputFieldScreen from "../screens/InputFieldScreen";
 import ScrollViewScreen from "../screens/ScrollViewScreen";
-import ModalScreen from "../screens/Modal";
+import ModalScreen from "../screens/ModalScreen";
 import FoodScreen from "../screens/FoodScreen";
 
 export default function Navigation() {

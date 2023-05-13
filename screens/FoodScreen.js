@@ -1,5 +1,10 @@
 import React, {useState} from 'react';
-import {Pressable, Text, View, Image, StyleSheet, Button} from 'react-native';
+import {Pressable, 
+        Text, 
+        View, 
+        Image, 
+        StyleSheet
+      } from 'react-native';
 
 const HungryOwl = props => {
   const [isHungry, setIsHungry] = useState(true);
@@ -35,6 +40,7 @@ const FoodScreen = () => {
 
 export default FoodScreen;
 
+//-------------- Styles-----------------------------
 const styles = StyleSheet.create({
 container:{
   flex: 1, 

@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import { AntDesign } from '@expo/vector-icons';
+
 import {Text, 
         TextInput, 
         View,
         StyleSheet,
         Button,
-        FlatList,
+        Image,
         ScrollView} from 'react-native';
 
 export default function ScrollViewScreen() {
@@ -20,11 +22,9 @@ export default function ScrollViewScreen() {
         setText("")
     }
 
-    const item =wholeText.map((item) => {
-        return (
-        <View>
-            <Text style={styles.item} key={item}>{item}</Text>
-        </View>
+    const item = wholeText.map((item, index) => {
+        return (      
+            <Text key = {item} style={styles.item}><AntDesign name="arrowright" size={16} color="black" />  {item}</Text>     
         );
     })
 
@@ -50,13 +50,20 @@ export default function ScrollViewScreen() {
                             {item}
                         </View>
                     </ScrollView>
-                    </View>
+                </View>
+
+                <View>
+                    <Image
+                        source={require('../assets/owl-bottom.png')}
+                        style={styles.image} />
+                </View>
 
         </View>
 
     )
 }
 
+//-------------- Styles-----------------------------
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -101,5 +108,11 @@ const styles = StyleSheet.create({
     text:{
         fontSize: 20,
         marginTop: 20,
+    },
+
+    image:{
+        marginTop: 30,
+        width: 420,
+        height:200,
     }
 })
