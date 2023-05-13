@@ -52,7 +52,7 @@ export default function ScrollViewScreen() {
                     </ScrollView>
                 </View>
 
-                <View>
+                <View style={styles.imageContainer}>
                     <Image
                         source={require('../assets/owl-bottom.png')}
                         style={styles.image} />
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginTop: 50,
         height: 200,
-        width: 200, 
+        width: "90%", 
     },
 
     inputText: {
@@ -110,9 +110,19 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
 
-    image:{
+    imageContainer: {
         marginTop: 30,
-        width: 420,
-        height:200,
+        width: "100%",
+        height: 300
+    },
+
+    image:{
+        width: "100%",
+        height: 200, 
+        resizeMode:"stretch",
+        //resizeMode:"cover",
+        //resizeMode:"contain",
+        //resizeMode:"repeat",
+        //resizeMode:"center",
     }
 })

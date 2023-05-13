@@ -11,6 +11,7 @@ import {
     Image,
     ImageBackground,
 } from 'react-native';
+import PressableComponemnt from '../components/Buttons';
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -28,6 +29,11 @@ export default function ButtonScreen() {
         console.log("World");
         setBackground('violet');
     }
+
+    const handlePress = () => {
+        console.log("Press om pressable button");
+      };
+    
 
     return (
 
@@ -50,16 +56,16 @@ export default function ButtonScreen() {
                     </TouchableOpacity >
 
                     <Separator />
-
+ 
                     <Pressable style={[styles.btnPressMe, {backgroundColor: background}]} 
                                 onPressIn={() => setBackground('gray')}
                                 onPress={helloWorld}
                                 onPressOut={helloWorld2}>
-                                    {({pressed}) => (
-          <Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>
-        )}
-                        {/* <Text style={styles.text}>Pressable</Text> */}
-                    </Pressable>
+                                    {({pressed}) => (<Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>)}
+                    </Pressable> 
+
+
+
 
                     <Separator />
 
@@ -94,6 +100,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         width: null,
         height: null,
+        backgroundColor: "white"
     },
 
     btnPressMe: {

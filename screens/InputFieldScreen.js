@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { EvilIcons } from '@expo/vector-icons';
+import PressableComponemnt from '../components/Buttons';
 
 import {
     Text,
@@ -34,14 +35,14 @@ export default function InputFieldScreen() {
                     onChangeText={newText => setText(newText)}
                     defaultValue={text}
                 />
-                <Button title="ADD TO LIST"
-                    color="#d2691e"
-                    onPress={showText} />
 
-                {/* </View> */}
+                <PressableComponemnt
+                                onPress={showText}
+                                title={"ADD TO LIST"}
+                                style={{ backgroundColor: "#d2691e" }}
+                            />
 
                 {/* <ScrollView style={styles.scrollview} horizomtal> */}
-                {/* <View style={styles.flatListContainer}> */}
 
                 <Text style={styles.text}>FlatList:</Text>
 
@@ -95,14 +96,14 @@ const styles = StyleSheet.create({
     },
 
     list: {
-        borderRadius: 10,
+
         borderColor: "gray",
         borderWidth: 1,
-        marginTop: 30,
-        marginLeft: 10,
+        marginTop: 0,
+        marginLeft: 0,
         backgroundColor: '#ffebcd',
-        maxHeight: 400,
-        width: 200,
+        maxHeight: "100%",
+        width: "100%",
         opacity: 0.6
     },
 
