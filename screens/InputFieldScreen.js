@@ -50,6 +50,7 @@ export default function InputFieldScreen() {
                                 source={require('../assets/owl-flat.png')}>
 
                     <FlatList   data={wholeText}
+                                
                                 style={styles.list}
                                 showsVerticalScrollIndicator={true}
                                 renderItem={({ item }) => 
@@ -95,8 +96,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white"
     },
 
-    list: {
-
+    list: {   
         borderColor: "gray",
         borderWidth: 1,
         marginTop: 0,
@@ -115,15 +115,16 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         marginTop: 20,
-        
+        fontFamily: ""
     },
-    image: {
-        width: 420,
-        height: 200
-    },
-     image:{
-        width: 420,
+
+    image:{
+        width: "100%",
         height: 500,
         alignItems: 'center',
+        //resizeMode:"cover",
+        //resizeMode:"contain",
+        //resizeMode:"repeat",
+        //resizeMode:"center",
      }
 })

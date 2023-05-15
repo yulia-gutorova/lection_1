@@ -6,6 +6,7 @@ import InputFieldScreen from "../screens/InputFieldScreen";
 import ScrollViewScreen from "../screens/ScrollViewScreen";
 import ModalScreen from "../screens/ModalScreen";
 import FoodScreen from "../screens/FoodScreen";
+import FlatlistScreen from "../screens/FlatlistScreen";
 
 export default function Navigation() {
 
@@ -35,8 +36,12 @@ export default function Navigation() {
                         component={ModalScreen}/>   
 
                     <Stack.Screen 
-                        name="FoodScreen"
-                        component={FoodScreen}/>       
+                        name="Food"
+                        component={FoodScreen}/>  
+
+                    <Stack.Screen 
+                        name="Flatlist"
+                        component={FlatlistScreen}/>      
                 </Stack.Navigator>
             </NavigationContainer>
     )

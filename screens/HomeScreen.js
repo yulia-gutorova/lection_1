@@ -1,31 +1,28 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { Animated } from "react-native";
-import { useFonts } from 'expo-font';
-import * as Font from 'expo-font';
+
+// import { useFonts } from 'expo-font';
+// import * as Font from 'expo-font';
 
 import {
     View,
     Text,
-    Button,
     StyleSheet,
-    FlatList,
-    Image,
     ImageBackground,
     TouchableHighlight,
 } from "react-native";
 
-import { Hoverable, Pressable, } from 'react-native-web-hover'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {fonts} from "../utilities/loadFont.js"
 
 const Separator = () => <View style={styles.separator} />;
 
 const HomeScreen = ({ navigation }) => {
 
-    const [loadFonts, setLoadFonts] = useState(true);
+    const [loadFonts, setLoadFonts] = useState(false);
 
-   /*  console.log(loadFonts);
+     console.log(loadFonts);
 
-    async function fonts() {
+ /*    async function fonts() {
         try{
             await Font.loadAsync({
                 "PoppinsBold": require("../assets/fonts/Poppins-Bold.ttf"),
@@ -39,9 +36,16 @@ const HomeScreen = ({ navigation }) => {
             setLoadFonts(true);
             console.log(loadFonts)
         }
-      }
+      } */
 
-    fonts();  */
+    useEffect (() => {
+        (async function() {
+            let font = await fonts();
+            setLoadFonts(font);
+        })()
+        
+    }, []) 
+      
 
     if(loadFonts) {
         return (
@@ -77,7 +81,7 @@ const HomeScreen = ({ navigation }) => {
                         <TouchableHighlight
                             style={styles.btnPressMe}
                             onPress={() => navigation.push("Input")}>
-                            <Text style={styles.btnText}>GO TO FLATLIST</Text>
+                            <Text style={styles.btnText}>GO TO INPUT</Text>
                         </TouchableHighlight>
     
                         <Separator />
@@ -100,8 +104,16 @@ const HomeScreen = ({ navigation }) => {
     
                         <TouchableHighlight
                             style={styles.btnPressMe}
-                            onPress={() => navigation.push("FoodScreen")}>
+                            onPress={() => navigation.push("Food")}>
                             <Text style={styles.btnText}>GO TO HUNGRY OWL</Text>
+                        </TouchableHighlight>
+
+                        <Separator />
+    
+                        <TouchableHighlight
+                            style={styles.btnPressMe}
+                            onPress={() => navigation.push("Flatlist")}>
+                            <Text style={styles.btnText}>GO TO FLATLIST</Text>
                         </TouchableHighlight>
                         </View>
                         
@@ -151,7 +163,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingBottom: 30,
-        fontFamily: "Raleway-Italic",
+        fontFamily: "RalewayItalic",
     },
 
     buttonsContainer: {
@@ -160,8 +172,9 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: 415,
+        width: 420,
         height: 200,
+        resizeMode: "center"
     },
 
     separator: {
